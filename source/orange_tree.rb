@@ -64,31 +64,31 @@ end
 
 
 #-----DRIVERS-----
-tree = OrangeTree.new
+# tree = OrangeTree.new
 
-tree.age! until tree.any_oranges?
+# tree.age! until tree.any_oranges?
 
-puts "Tree is #{tree.age} years old and #{tree.height} feet tall"
+# puts "Tree is #{tree.age} years old and #{tree.height} feet tall"
 
-until tree.dead?
-  basket = []
+# until tree.dead?
+#   basket = []
 
-  # It places the oranges in the basket
-  # IT PLACES THE ORANGES IN THE BASKET
-  while tree.any_oranges?
-    basket << tree.pick_an_orange!
-  end
+#   # It places the oranges in the basket
+#   # IT PLACES THE ORANGES IN THE BASKET
+#   while tree.any_oranges?
+#     basket << tree.pick_an_orange!
+#   end
 
-  diameters = basket.map { |orange| orange.diameter }
-  avg_diameter = diameters.reduce(:+) / diameters.length
+#   diameters = basket.map { |orange| orange.diameter }
+#   avg_diameter = diameters.reduce(:+) / diameters.length
 
-  puts "Year #{tree.age} Report"
-  puts "Tree height: #{tree.height} feet"
-  puts "Harvest:     #{basket.size} oranges with an average diameter of #{avg_diameter} inches"
-  puts ""
+#   puts "Year #{tree.age} Report"
+#   puts "Tree height: #{tree.height} feet"
+#   puts "Harvest:     #{basket.size} oranges with an average diameter of #{avg_diameter} inches"
+#   puts ""
 
-  # Age the tree another year
-  tree.age!
-end
+#   # Age the tree another year
+#   tree.age!
+# end
 
-puts "Alas, the tree, she is dead!"
+# puts "Alas, the tree, she is dead!"
