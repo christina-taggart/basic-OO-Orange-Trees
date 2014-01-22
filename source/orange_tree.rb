@@ -11,29 +11,22 @@ class OrangeTree
     @oranges = []
   end
 
-  def age
-    @age
+  def grow_older
+    @age += 1
   end
 
-  def height
-    @height
+  def grow_taller
+    @height += 1 unless @age >25
+  end
+
+  def grow_fruit
+      (rand(10) + 1).times { @oranges << Orange.new(@avg_diameter) } if @age>=10
   end
 
   def age!
-    @age += 1
-    @height += 1
-    if @age < 10
-      return
-    else
-      (rand(10) + 1).times { @oranges << Orange.new(@avg_diameter) }
-    end
-    if @age > 25
-      @height = 25
-    else
-      @height += 1
-    end
-
-
+    grow_older
+    grow_taller
+    grow_fruit
   end
 
   # Returns +true+ if there are any oranges on the tree, +false+ otherwise
@@ -77,35 +70,46 @@ end
 
 
 
+#test 1: A new tree should have age 0
+otree = OrangeTree.new
+p otree.age == 0
+
+#test 2 a tree that has been age! once should have age 1
+
+otree.age!
+p otree.age == 1
+
+#a tree that is over 25 yrs should have height 25
+27.times {otree.age!}
+p otree.height == 25
 
 
 
 
+# tree = OrangeTree.new
 
-tree = OrangeTree.new
+# # tree.age! until tree.any_oranges?
 
-# tree.age! until tree.any_oranges?
+# puts "Tree is #{tree.age} years old and #{tree.height} feet tall"
 
-puts "Tree is #{tree.age} years old and #{tree.height} feet tall"
+# until tree.dead?
+#   basket = []
 
-until tree.dead?
-  basket = []
+#   # It places the oranges in the basket
+#   # IT PLACES THE ORANGES IN THE BASKET
+#   while tree.any_oranges?
+#     basket << tree.pick_an_orange!
+#   end
 
-  # It places the oranges in the basket
-  # IT PLACES THE ORANGES IN THE BASKET
-  while tree.any_oranges?
-    basket << tree.pick_an_orange!
-  end
+#   avg_diameter = tree.avg_diameter# It's up to you to calculate the average diameter for this harvest.
 
-  avg_diameter = tree.avg_diameter# It's up to you to calculate the average diameter for this harvest.
+#   puts "Year #{tree.age} Report"
+#   puts "Tree height: #{tree.height} feet"
+#   puts "Harvest:     #{basket.size} oranges with an average diameter of #{avg_diameter} inches"
+#   puts ""
 
-  puts "Year #{tree.age} Report"
-  puts "Tree height: #{tree.height} feet"
-  puts "Harvest:     #{basket.size} oranges with an average diameter of #{avg_diameter} inches"
-  puts ""
+#   # Age the tree another year
+#   tree.age!
+# end
 
-  # Age the tree another year
-  tree.age!
-end
-
-puts "Alas, the tree, she is dead!"
+# puts "Alas, the tree, she is dead!"
